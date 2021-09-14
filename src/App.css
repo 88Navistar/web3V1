@@ -3,19 +3,32 @@
   justify-content: center;
   width: 100%;
   margin-top: 64px;
-  background-color:azure
+  background-color:azure;
 }
 
 .dataContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 600px;
+  max-width: 1200px;
+}
+
+.button {
+  max-width: 150px;
+}
+.cardHolder{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 .card {
-  background-color: grey;
-  padding: 8px;
-  gap: 4px;
+  flex: 1 1 150px;
+  max-width: 250px;
+  background-color:whitesmoke;
+  border-radius: 16px;
+  padding: 16px;
+  overflow: scroll;
+
 }
 .header {
   text-align: center;
@@ -26,7 +39,7 @@
 .bio {
   text-align: center;
   color: gray;
-  margin-top: 16px;
+  margin: 16px;
 }
 
 .waveButton {

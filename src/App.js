@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import './App.css';
 import abi from "./utils/WavePortal.json";
 import ReactFlagsSelect from 'react-flags-select';
-import { Ca } from 'react-flags-select';
+import ReactCountryFlag from "react-country-flag";
 
 
 
@@ -98,27 +98,26 @@ export default function App() {
   React.useEffect(() => {
     checkIfWalletIsConnected()
   }, [])
-  const capitalize = (s) => {
-  if (typeof s !== 'string') return ''
-  return s.charAt(0) + s.charAt(1).toLowerCase()
-}
+
   return (
     
     <div className="mainContainer">
-
       <div className="dataContainer">
         <div className="header">
-        <span role="img" aria-label="Wave">👋</span> 88 Create Crypto Project
+        <span role="img" aria-label="Wave">👋</span> 88 Create Crypto Project <span role="img" aria-label="Canadian Flag">🇨🇦</span>
         </div>
-        <Ca />
-        
+        <div className="bio">
+        Connect Your Wallet and use the Rinkeby Test Network
+        </div>
         <div className="bio">
         Select Your Country Flag and then the Wave Button
         </div>
         <div className="bio">
-        You have a 50% chance of winning ether
+        You have a 50% chance of winning Ethereum
         </div>
+        
         <ReactFlagsSelect
+        searchable
         selectedSize={14}
         selected={message}
         onSelect={code => setMessage(code)}
@@ -133,15 +132,24 @@ export default function App() {
           Connect Wallet
           </button>
         )}
+        
+        <div className="cardHolder">
         {allWaves.map((wave, index) => {
           return (
-            <div className="card">
+            
+            <div className="card" key={index}>
               <div>Address: {wave.address}</div>
               <div>Time: {wave.timestamp.toString()}</div>
-              <div>Country: {wave.message} </div>
+              <div>Country Code: {wave.message} </div>
+              <ReactCountryFlag countryCode={wave.message} style={{
+                    width: '2em',
+                    height: '2em',
+                }} svg />
             </div>
+            
           )
         })}
+        </div>
       </div>
     </div>
   );
